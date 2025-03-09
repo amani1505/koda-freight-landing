@@ -1,12 +1,41 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import FeaturesSection from "@/components/FeaturesSection";
+import ModulesSection from "@/components/ModulesSection";
+import AboutSection from "@/components/AboutSection";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import SplashScreen from "@/components/SplashScreen";
 
 const Index = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time for splash screen
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      {/* Splash Screen */}
+      {loading && <SplashScreen />}
+
+      {/* Main Content */}
+      <Navbar />
+      <main className="flex-grow">
+        <HeroSection />
+        <FeaturesSection />
+        <ModulesSection />
+        <AboutSection />
+      </main>
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };
