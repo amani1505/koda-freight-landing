@@ -6,7 +6,6 @@ import FeaturesSection from "@/components/FeaturesSection";
 import ModulesSection from "@/components/ModulesSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
 import SplashScreen from "@/components/SplashScreen";
 import ScrollIndicator from "@/components/ScrollIndicator";
 
@@ -37,7 +36,6 @@ const Index = () => {
       </main>
       <Footer />
       <ScrollIndicator />
-      <ScrollToTop />
     </div>
   );
 };
