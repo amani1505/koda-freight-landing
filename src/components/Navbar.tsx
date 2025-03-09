@@ -40,9 +40,9 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="flex items-center">
-          <KodaLogo className="h-10 w-auto" />
-          <span className="ml-2 text-xl font-bold text-koda-purple dark:text-white">
+        <a href="#home" className="flex items-center group">
+          <KodaLogo className="h-10 w-auto" animated={true} />
+          <span className="ml-2 text-xl font-bold text-koda-purple dark:text-white group-hover:text-koda-orange dark:group-hover:text-koda-orange transition-colors duration-300">
             Koda Freight
           </span>
         </a>
@@ -54,7 +54,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="font-medium text-gray-700 hover:text-koda-orange dark:text-gray-200 dark:hover:text-koda-orange transition-colors duration-300"
+                className="font-medium text-gray-700 hover:text-koda-orange dark:text-gray-200 dark:hover:text-koda-orange transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-koda-orange after:origin-center after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
               >
                 {link.name}
               </a>
@@ -62,7 +62,9 @@ export default function Navbar() {
           </div>
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            <Button className="btn-primary">Get Started</Button>
+            <Button className="bg-koda-purple hover:bg-koda-orange text-white transition-all duration-300 transform hover:scale-105">
+              Get Started
+            </Button>
           </div>
         </div>
 
@@ -95,7 +97,9 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            <Button className="btn-primary w-full">Get Started</Button>
+            <Button className="bg-koda-purple hover:bg-koda-orange text-white transition-colors duration-300 w-full">
+              Get Started
+            </Button>
           </div>
         </div>
       )}

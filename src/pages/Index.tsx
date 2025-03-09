@@ -8,6 +8,7 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import SplashScreen from "@/components/SplashScreen";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -35,6 +36,7 @@ const Index = () => {
         <AboutSection />
       </main>
       <Footer />
+      <ScrollIndicator />
       <ScrollToTop />
     </div>
   );
