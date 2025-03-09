@@ -97,7 +97,7 @@ export default function HeroSection() {
                   className="absolute inset-0 opacity-80 dark:opacity-50"
                   style={{
                     backgroundImage:
-                      "url('https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8bG9naXN0aWNzfHwwfHx8fDE3MTMxOTE2NTB8MA&ixlib=rb-4.0.3&q=80&w=1080')",
+                      "url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8dHJhY2tpbmclMjByZWFsdGltZXx8MHx8fHwxNzEzMTkxNjUwfDA&ixlib=rb-4.0.3&q=80&w=1080')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
