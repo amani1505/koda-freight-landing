@@ -18,8 +18,29 @@ const Index = () => {
       setLoading(false);
     }, 2500);
 
-    return () => clearTimeout(timer);
-  }, []);
+    // Add scroll animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-fade-in-up");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Observe all sections after splash screen is done
+    if (!loading) {
+      document.querySelectorAll("section").forEach((section) => {
+        section.classList.add("opacity-0");
+        observer.observe(section);
+      });
+    }
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [loading]);
 
   return (
     <div className="min-h-screen flex flex-col">
