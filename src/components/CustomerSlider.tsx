@@ -115,73 +115,77 @@ const CustomerSlider = () => {
   }, []);
 
   return (
-    <section id="customers" className="w-full py-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-koda-purple dark:text-white">
-          Our <span className="text-koda-orange">Valued Customers</span>
-        </h2>
-        <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
-          Leading businesses across various industries trust Koda Freight for their logistics management needs.
-        </p>
-        
-        <div className="relative">
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-full bg-gradient-to-r from-gray-50 to-transparent dark:from-gray-900 z-10"></div>
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-full bg-gradient-to-l from-gray-50 to-transparent dark:from-gray-900 z-10"></div>
+    <>
+      <section id="customers" className="w-full py-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-koda-purple dark:text-white">
+            Our <span className="text-koda-orange">Valued Customers</span>
+          </h2>
+          <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
+            Leading businesses across various industries trust Koda Freight for their logistics management needs.
+          </p>
           
-          <div 
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * (100 / visibleCustomers)}%)` }}
-          >
-            {customers.map((customer, index) => (
-              <div 
-                key={`${customer.name}-${index}`} 
-                className="w-full sm:w-1/2 md:w-1/3 flex-shrink-0 px-4"
-              >
-                <Card className="h-full hover:shadow-lg transition-all duration-300 border-t-4 border-koda-orange overflow-hidden group">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col items-center text-center">
-                      <div className={cn("rounded-full p-4 mb-4 transition-transform group-hover:scale-110", customer.color)}>
-                        {customer.logo}
+          <div className="relative">
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-24 h-full bg-gradient-to-r from-gray-50 to-transparent dark:from-gray-900 z-10"></div>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 h-full bg-gradient-to-l from-gray-50 to-transparent dark:from-gray-900 z-10"></div>
+            
+            <div 
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * (100 / visibleCustomers)}%)` }}
+            >
+              {customers.map((customer, index) => (
+                <div 
+                  key={`${customer.name}-${index}`} 
+                  className="w-full sm:w-1/2 md:w-1/3 flex-shrink-0 px-4"
+                >
+                  <Card className="h-full hover:shadow-lg transition-all duration-300 border-t-4 border-koda-orange overflow-hidden group">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col items-center text-center">
+                        <div className={cn("rounded-full p-4 mb-4 transition-transform group-hover:scale-110", customer.color)}>
+                          {customer.logo}
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 text-koda-purple dark:text-koda-orange">{customer.name}</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{customer.industry}</p>
+                        <p className="text-gray-700 dark:text-gray-300 mb-4">{customer.description}</p>
+                        <a 
+                          href={customer.website} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-koda-purple hover:text-koda-orange dark:text-koda-orange dark:hover:text-white transition-colors"
+                        >
+                          <span className="mr-1">Visit Website</span>
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
                       </div>
-                      <h3 className="text-xl font-bold mb-2 text-koda-purple dark:text-koda-orange">{customer.name}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{customer.industry}</p>
-                      <p className="text-gray-700 dark:text-gray-300 mb-4">{customer.description}</p>
-                      <a 
-                        href={customer.website} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-koda-purple hover:text-koda-orange dark:text-koda-orange dark:hover:text-white transition-colors"
-                      >
-                        <span className="mr-1">Visit Website</span>
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="flex justify-center mt-8">
+            {Array.from({ length: customers.length - visibleCustomers + 1 }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 mx-1 rounded-full transition-all duration-300 ${
+                  currentIndex === index 
+                    ? 'bg-koda-orange scale-125' 
+                    : 'bg-gray-300 dark:bg-gray-700'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
           </div>
         </div>
-        
-        <div className="flex justify-center mt-8">
-          {Array.from({ length: customers.length - visibleCustomers + 1 }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 mx-1 rounded-full transition-all duration-300 ${
-                currentIndex === index 
-                  ? 'bg-koda-orange scale-125' 
-                  : 'bg-gray-300 dark:bg-gray-700'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-        
-        <div className="mt-12 pt-12 border-t border-gray-200 dark:border-gray-700">
-          <h3 className="text-2xl font-bold text-center mb-8 text-koda-purple dark:text-white">
-            What Our Clients Say
-          </h3>
+      </section>
+      
+      <section id="testimonials" className="w-full py-16 bg-white dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-koda-purple dark:text-white">
+            What Our <span className="text-koda-orange">Clients Say</span>
+          </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {customers.slice(0, 3).map((customer, index) => (
@@ -203,11 +207,13 @@ const CustomerSlider = () => {
             ))}
           </div>
         </div>
-        
-        <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700">
-          <h3 className="text-2xl font-bold text-center mb-10 text-koda-purple dark:text-white">
-            Trusted by Industry Leaders
-          </h3>
+      </section>
+      
+      <section id="trusted-leaders" className="w-full py-16 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-koda-purple dark:text-white">
+            Trusted by <span className="text-koda-orange">Industry Leaders</span>
+          </h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-items-center">
             {customers.slice(0, 10).map((customer, index) => (
@@ -226,8 +232,8 @@ const CustomerSlider = () => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
