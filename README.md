@@ -66,5 +66,6 @@ Mbezi Beach - A, 2nd Floor, Dar es Salaam - Tanzania
 
 ## Notes
 - No contact form will be included in this version.
+- Users can request for the demo of the system
 - The website will focus on animations, images, and intuitive UI elements.
 - Navigation and content will be optimized for smooth scrolling and interaction.
