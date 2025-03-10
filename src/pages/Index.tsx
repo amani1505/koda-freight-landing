@@ -7,6 +7,7 @@ import ModulesSection from "@/components/ModulesSection";
 import ClientsSection from "@/components/ClientsSection";
 import CustomerSlider from "@/components/CustomerSlider";
 import AboutSection from "@/components/AboutSection";
+import DemoRequestSection from "@/components/DemoRequestSection";
 import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
 import ScrollIndicator from "@/components/ScrollIndicator";
@@ -101,6 +102,7 @@ const Index = () => {
         <CustomerSlider />
         <ClientsSection />
         <AboutSection />
+        <DemoRequestSection />
       </main>
       <Footer />
       <ScrollIndicator />
