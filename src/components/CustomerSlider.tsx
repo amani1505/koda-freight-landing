@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
@@ -175,6 +176,32 @@ const CustomerSlider = () => {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
+        </div>
+        
+        <div className="mt-12 pt-12 border-t border-gray-200 dark:border-gray-700">
+          <h3 className="text-2xl font-bold text-center mb-8 text-koda-purple dark:text-white">
+            What Our Clients Say
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {customers.slice(0, 3).map((customer, index) => (
+              <div key={`testimonial-${index}`} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <div className="flex items-center mb-4">
+                  <div className={cn("rounded-full p-2 mr-3", customer.color)}>
+                    {React.cloneElement(customer.logo as React.ReactElement, { className: 'w-8 h-8' })}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-koda-purple dark:text-koda-orange">{customer.name}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{customer.industry}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 italic">
+                  "Koda Freight has transformed how we manage our logistics operations. 
+                  Their platform is intuitive and has helped us reduce costs while improving efficiency."
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
         
         <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700">
