@@ -20,11 +20,11 @@ export default function AboutSection() {
               ></div>
               <div className="absolute inset-0 bg-gradient-to-r from-koda-purple/60 to-koda-orange/60"></div>
             </div>
-            <div className="absolute -bottom-8 -right-8 w-3/4 h-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-fade-in-up">
-              <h3 className="text-xl font-bold mb-2 text-koda-purple dark:text-koda-orange">
+            <div className="absolute -bottom-8 sm:-right-8 right-0 w-full sm:w-3/4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 animate-fade-in-up">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-koda-purple dark:text-koda-orange">
                 Why Choose Koda Freight?
               </h3>
-              <p className="text-gray-700 dark:text-gray-300">
+              <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
                 Our system simplifies freight operations with real-time updates,
                 comprehensive management tools, and integrated modules.
               </p>
@@ -46,6 +46,22 @@ export default function AboutSection() {
               streamline operations, making it the ideal solution for logistics
               companies of all sizes.
             </p>
+
+            {/* Stats Counter */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md text-center border-l-4 border-koda-purple">
+                <div className="text-3xl font-bold text-koda-purple dark:text-koda-orange counter">
+                  1200+
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">Happy Customers</p>
+              </div>
+              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md text-center border-l-4 border-koda-orange">
+                <div className="text-3xl font-bold text-koda-purple dark:text-koda-orange counter">
+                  12+
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">Years of Operation</p>
+              </div>
+            </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8 border-l-4 border-koda-orange">
               <h3 className="font-bold mb-2 text-gray-800 dark:text-white">
