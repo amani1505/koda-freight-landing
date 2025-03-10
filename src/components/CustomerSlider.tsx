@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
@@ -8,7 +7,6 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 
-// Define the customer data structure
 interface Customer {
   name: string;
   logo: React.ReactNode;
@@ -105,7 +103,6 @@ const CustomerSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const visibleCustomers = 3; // Number of customers visible at once
 
-  // Auto-scroll the slider
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => 
@@ -165,7 +162,6 @@ const CustomerSlider = () => {
           </div>
         </div>
         
-        {/* Slider navigation dots */}
         <div className="flex justify-center mt-8">
           {Array.from({ length: customers.length - visibleCustomers + 1 }).map((_, index) => (
             <button
@@ -181,7 +177,29 @@ const CustomerSlider = () => {
           ))}
         </div>
         
-        {/* Client testimonials section */}
+        <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700">
+          <h3 className="text-2xl font-bold text-center mb-10 text-koda-purple dark:text-white">
+            Trusted by Industry Leaders
+          </h3>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-items-center">
+            {customers.slice(0, 10).map((customer, index) => (
+              <a 
+                key={`logo-${index}`}
+                href={customer.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center hover:scale-110 transition-transform"
+              >
+                <div className={cn("rounded-full p-3 mb-2", customer.color)}>
+                  {React.cloneElement(customer.logo as React.ReactElement, { className: 'w-10 h-10' })}
+                </div>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{customer.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+        
         <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700">
           <h3 className="text-2xl font-bold text-center mb-10 text-koda-purple dark:text-white">
             What Our Clients Say
