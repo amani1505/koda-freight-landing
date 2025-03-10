@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import ModulesSection from "@/components/ModulesSection";
 import ClientsSection from "@/components/ClientsSection";
+import CustomerSlider from "@/components/CustomerSlider";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
@@ -97,6 +98,7 @@ const Index = () => {
         <HeroSection />
         <FeaturesSection />
         <ModulesSection />
+        <CustomerSlider />
         <ClientsSection />
         <AboutSection />
       </main>
