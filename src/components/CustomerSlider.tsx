@@ -181,34 +181,6 @@ const CustomerSlider = () => {
         </div>
       </section>
       
-      <section id="testimonials" className="w-full py-16 bg-white dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-koda-purple dark:text-white">
-            What Our <span className="text-koda-orange">Clients Say</span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {customers.slice(0, 3).map((customer, index) => (
-              <div key={`testimonial-${index}`} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                <div className="flex items-center mb-4">
-                  <div className={cn("rounded-full p-2 mr-3", customer.color)}>
-                    {React.cloneElement(customer.logo as React.ReactElement, { className: 'w-8 h-8' })}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-koda-purple dark:text-koda-orange">{customer.name}</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{customer.industry}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 italic">
-                  "Koda Freight has transformed how we manage our logistics operations. 
-                  Their platform is intuitive and has helped us reduce costs while improving efficiency."
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
       <section id="trusted-leaders" className="w-full py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-koda-purple dark:text-white">
