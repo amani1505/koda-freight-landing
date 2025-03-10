@@ -3,9 +3,19 @@ import { useState, useEffect } from "react";
 import { ChevronRight, Truck, Globe, BarChart3, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { toast } from "sonner";
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    city: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const slides = [
     {
@@ -48,6 +58,37 @@ export default function HeroSection() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+  
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API request
+    setTimeout(() => {
+      // Success handling
+      toast.success("Demo request submitted successfully! We'll contact you soon.");
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        city: "",
+        message: ""
+      });
+      
+      setIsSubmitting(false);
+    }, 1500);
   };
 
   return (
@@ -205,7 +246,7 @@ export default function HeroSection() {
             
             <Card className="border-t-4 border-koda-orange">
               <CardContent className="pt-6">
-                <form className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
@@ -214,6 +255,8 @@ export default function HeroSection() {
                         type="text"
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-koda-orange dark:bg-gray-700 dark:text-white"
                         placeholder="John Doe"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         required
                       />
                     </div>
@@ -224,6 +267,8 @@ export default function HeroSection() {
                         type="email"
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-koda-orange dark:bg-gray-700 dark:text-white"
                         placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         required
                       />
                     </div>
@@ -237,6 +282,8 @@ export default function HeroSection() {
                         type="tel"
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-koda-orange dark:bg-gray-700 dark:text-white"
                         placeholder="+1 234 567 8900"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         required
                       />
                     </div>
@@ -247,6 +294,8 @@ export default function HeroSection() {
                         type="text"
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-koda-orange dark:bg-gray-700 dark:text-white"
                         placeholder="Company Inc."
+                        value={formData.company}
+                        onChange={handleInputChange}
                         required
                       />
                     </div>
@@ -259,6 +308,8 @@ export default function HeroSection() {
                       type="text"
                       className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-koda-orange dark:bg-gray-700 dark:text-white"
                       placeholder="New York"
+                      value={formData.city}
+                      onChange={handleInputChange}
                       required
                     />
                   </div>
@@ -270,13 +321,19 @@ export default function HeroSection() {
                       rows={4}
                       className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-koda-orange dark:bg-gray-700 dark:text-white"
                       placeholder="Tell us about your freight operations and how we can help..."
+                      value={formData.message}
+                      onChange={handleInputChange}
                     ></textarea>
                   </div>
                 </form>
               </CardContent>
               <CardFooter className="flex justify-center">
-                <Button className="w-full sm:w-auto btn-primary">
-                  Request Demo
+                <Button 
+                  className="w-full sm:w-auto btn-primary"
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Request Demo"}
                 </Button>
               </CardFooter>
             </Card>
