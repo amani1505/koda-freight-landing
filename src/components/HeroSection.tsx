@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ChevronRight, Truck, Globe, BarChart3, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -60,10 +59,11 @@ export default function HeroSection() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
   
+  // Fixed handler for input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
+    setFormData(prevData => ({
+      ...prevData,
       [id]: value
     }));
   };
