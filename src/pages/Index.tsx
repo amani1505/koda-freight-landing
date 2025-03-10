@@ -22,18 +22,26 @@ const Index = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          // Remove opacity-0 and add animation class
+          entry.target.classList.remove("opacity-0");
           entry.target.classList.add("animate-fade-in-up");
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
 
-    // Observe all sections after splash screen is done
+    // Setup observer after splash screen is done
     if (!loading) {
-      document.querySelectorAll("section").forEach((section) => {
-        section.classList.add("opacity-0");
-        observer.observe(section);
-      });
+      // Small delay to ensure DOM is ready after splash screen
+      setTimeout(() => {
+        document.querySelectorAll("section").forEach((section) => {
+          // Initially hide sections
+          if (!section.classList.contains("opacity-0")) {
+            section.classList.add("opacity-0");
+          }
+          observer.observe(section);
+        });
+      }, 100);
     }
 
     return () => {
