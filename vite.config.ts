@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "0.0.0.0", // Allows external access
+    host: "kodafreight.com", // Allows external access
     port: 3000, // Match the exposed port
     strictPort: true, // Ensure the port does not change
     watch: {
